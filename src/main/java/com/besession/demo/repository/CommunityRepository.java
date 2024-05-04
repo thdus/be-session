@@ -1,5 +1,6 @@
 package com.besession.demo.repository;
 
-public interface CommunityRepository extends_jpaRepository<Community, Long>{
+import org.springframework.data.jpa.repository.JpaRepository;
 
+public interface CommunityRepository extends JpaRepository<Community, Long> {
 }

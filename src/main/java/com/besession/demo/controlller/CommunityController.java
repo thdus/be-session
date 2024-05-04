@@ -5,7 +5,7 @@ import com.besession.demo.repository.dto.CommunityDTO;
 import com.besession.demo.service.CommunityService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.*;
+        import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequiredArgsConstructor
@@ -14,15 +14,29 @@ public class CommunityController {
 
     private final CommunityService communityService;
 
-    @GetMapping(value = "{id}/getinfo")
+    /**
+     * 정보 가져오기
+     * @param id
+     * @return
+     */
+    @GetMapping(value = "getinfo")
     public ResponseEntity<Community> getInfo(
-            @PathVariable Long id){
+            @RequestParam Long id){
 
         Community result = communityService.getCommunityInfo(id);
         return ResponseEntity.ok(result);
     }
 
+    /**
+     * 정보 저장
+     * @param communityDTO
+     * @return
+     */
     @PostMapping(value="/save")
-    public ResponseEntity<Long> saveInfo(@RequestBody Community community)
-        return ResponseEntity.ok(communityService.saveInfo(communityDTO));
+    public ResponseEntity<Long> saveInfo(
+            @RequestBody CommunityDTO communityDTO) {
+
+        Long id = communityService.saveInfo(communityDTO);
+        return ResponseEntity.ok(id);
+    }
 }

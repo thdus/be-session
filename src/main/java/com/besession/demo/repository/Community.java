@@ -1,36 +1,25 @@
 package com.besession.demo.repository;
 
 import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 
 @Entity
 @Getter
 @Table(name="community")
+@Builder
+@NoArgsConstructor
+@AllArgsConstructor
 public class Community {
 
 
     @Id
-    private Long id;
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = 'community_id')
-    private long id:
+    @Column(name = "community_id")
+    private Long id;
 
-    private String title:
-    private String
-
-    public void setId(Long id) {
-        this.id = id;
-    }
-
-    public Long getId() {
-        return id;
-
-        @Id
-        @GeneratedValue(strategy = GenerationType.IDENTITY)
-        @Column(name = 'community_id')
-        private long id:
-
-        private String title:
-        private String
-    }
+    private String title;
+    private String content;
 }
